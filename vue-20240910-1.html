@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vuejs 語法練習</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+    <style>
+        .box01{
+            width: 180px;
+            height: 180px;
+            transition: transform 1s;
+        }
+        .rotate{
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="app">
+        <div class="h1"> {{ text01 }} </div>
+        <div v-html="text_html"></div>
+        <div>{{ img_html }}</div>
+        <div v-html="img_html"></div>
+        <div class="mb-3">
+            <label for="" class="form-label">帳號</label>
+            <input type="text" class="form-control" v-model="username">
+            <span class="h3 fw-900 text-danger">我的帳號: {{ username }}</span>
+            <br>
+            <img v-bind:src="imgSrc" v-bind:class="className" alt="">
+            <br>
+            <div class="h1" v-bind:class="is_linethrough">測試class綁定功能</div>
+            <div class="row my-5">
+                <div class="col-12">
+                    <ul class="list-group">
+                        <template v-for="(item, key) in list">
+                            <li class="list-group-item d-flex" v-if="item.price > 30">
+                                <span class="h4 text-success fw-700 me-auto">{{ key+1 }}. {{ item.product }}</span>
+                                <span>{{ item.price }} 元</span>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row my-5">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" v-on:click="mylink = '草莓'"
+                            v-bind:class="{'active' : mylink == '草莓'}">草莓</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" v-on:click="mylink = '香蕉'"
+                            v-bind:class="{'active' : mylink == '香蕉'}">香蕉</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" v-on:click="mylink = '櫻桃'"
+                            v-bind:class="{'active' : mylink == '櫻桃'}">櫻桃</a>
+                    </li>
+                </ul>
+                <div>
+                    <div v-if="mylink == '草莓'">草莓很甜很好吃</div>
+                    <div v-else-if="mylink == '香蕉'">香蕉很甜很好吃</div>
+                    <div v-else-if="mylink == '櫻桃'">櫻桃很甜很好吃</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- v-on: @ -->
+        <!-- v-bind : -->
+        <div class="row my-5">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" 
+                    @click.prevent="myprice = 30" 
+                    :class="{'active' : myprice == 30}">30元以上</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" 
+                    @click.prevent="myprice = 50" 
+                    :class="{'active' : myprice == 50}">50元以上</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" 
+                    @click.prevent="myprice = 60" 
+                    :class="{'active' : myprice == 60}">60元以上</a>
+                </li>
+            </ul>
+            <ul class="list-group mt-2">
+                <template v-for="(item, key) in list">
+                    <li class="list-group-item d-flex" v-if="item.price > myprice">
+                        <span class="h4 text-success fw-700 me-auto">{{ key+1 }}. {{ item.product }}</span>
+                        <span>{{ item.price }} 元</span>
+                    </li>
+                </template>
+            </ul>
+        </div>
+
+        <div class="row my-3 border border-4 py-3">
+            <div class="mb-3">
+                <label for="" class="form-label">輸入字串</label>
+                <input type="text" class="form-control" v-model="newText" @keyup.enter="reverseText">
+                <h3>你輸入的文字: {{ newText }}</h3>
+                <button class="btn btn-primary" @click="reverseText">反轉文字</button>
+                <h3>文字反轉: {{ reText }}</h3>
+                <hr>
+                <h3>文字反轉(computed): {{ reverseText01 }}</h3>
+            </div>
+        </div>
+
+        <div class="row my-3 border border-4 py-3">
+            <div class="col-12">
+                <div class="box01 border border-danger" :class="{ 'rotate': isRotate}"></div>
+                <hr>
+                <button class="btn btn-success" @click="isRotate = !isRotate">旋轉</button>
+            </div>
+        </div>
+
+        <div class="row my-3 border border-4 py-3">
+            <div class="col-12">
+                <div class="box01 border border-success" :class="{ 'rounded-circle': isCircle}"></div>
+                <hr>
+                <button class="btn btn-primary" @click="isCircle = !isCircle">變圓形</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        .line-through {
+            text-decoration: line-through;
+        }
+    </style>
+    <script>
+        const App = {
+            data() {
+                return {
+                    text01: 'hello world',
+                    text_html: '<h3>這是一段HTML語法</h3>',
+                    img_html: '<img src="images/01.jpg" class="img-fluid" alt="">',
+                    username: 'owner',
+                    imgSrc: 'images/01.jpg',
+                    className: 'w-25',
+                    is_linethrough: 'line-through',
+                    list: [
+                        {
+                            product: "美式咖啡",
+                            price: 55
+                        },
+                        {
+                            product: "拿鐵咖啡",
+                            price: 65
+                        },
+                        {
+                            product: "卡布咖啡",
+                            price: 85
+                        },
+                        {
+                            product: "紅茶",
+                            price: 35
+                        },
+                        {
+                            product: "綠茶",
+                            price: 35
+                        }
+                    ],
+                    mylink: "",
+                    myprice: 0,
+                    newText: '',
+                    reText: '', //文字反轉
+                    isRotate: false,
+                    isCircle: false
+                }
+            },
+            methods: {
+                reverseText() {
+                    this.reText = this.newText.split('').reverse().join('');
+                }
+            },
+            computed: {
+                reverseText01() {
+                    return this.newText.split('').reverse().join('');
+                }
+            }
+        }
+        Vue.createApp(App).mount('#app')
+    </script>
+</body>
+
+</html>
