@@ -1,0 +1,69 @@
+[
+    {
+        "ID": 1,
+        "ProductName": "韓國水蜜桃",
+        "Price": 20,
+        "Ingredients": [
+            "韓國"
+           
+        ],
+        "Description": "好吃",
+        "ImagePath": "https://today-obs.line-scdn.net/0hojIslnZLMEV0Chro0XhPEk5cMypHZiNGEDxhWitkbnELaCdDQW97K1cMaCcLOHcbGmR3JVINK3QJO3BBH2x7/w644"
+    },
+    {
+        "ID": 2,
+        "ProductName": "日本香蕉",
+        "Price": 25,
+        "Ingredients": [
+           
+            "日本"
+        ],
+        "Description": "好吃",
+        "ImagePath": "https://i.epochtimes.com/assets/uploads/2019/06/banana_1340116028-600x400.jpg"
+    },
+    {
+        "ID": 3,
+        "ProductName": "日本西瓜",
+        "Price": 30,
+        "Ingredients": [
+         
+            "日本"
+        ],
+        "Description": "好吃",
+        "ImagePath": "https://owlting-blog-media.s3.ap-northeast-1.amazonaws.com/wp-content/uploads/2020/04/16122044/shutterstock_665274991.jpg"
+    },
+    {
+        "ID": 4,
+        "ProductName": "台灣水果",
+        "Price": 35,
+        "Ingredients": [
+            
+            "台灣"
+        ],
+        "Description": "好吃",
+        "ImagePath": "https://blog.worldgymtaiwan.com/hs-fs/hubfs/%E6%96%87%E7%AB%A0%E5%B0%88%E7%94%A8%E5%9C%96%E7%89%87/%E4%B8%AD%E5%85%83%E6%99%AE%E6%B8%A1%E6%8B%9C%E5%A5%87%E7%95%B0%E6%9E%9C.jpg?width=700&name=%E4%B8%AD%E5%85%83%E6%99%AE%E6%B8%A1%E6%8B%9C%E5%A5%87%E7%95%B0%E6%9E%9C.jpg"
+    },
+    {
+        "ID": 5,
+        "ProductName": "台灣水果",
+        "Price": 40,
+        "Ingredients": [
+          
+            "台灣"
+        ],
+        "Description": "好吃",
+        "ImagePath": "https://cdn.bella.tw/files-20220808/4(3).jpg"
+    },
+    {
+        "ID": 6,
+        "ProductName": "中國水果",
+        "Price": 45,
+        "Ingredients": [
+            
+            "中國"
+        ],
+        "Description": "好吃",
+        "ImagePath": "https://image.urbanlifehk.com/wp-content/uploads/2021/06/4159b982.jpg?auto=format&w=1053"
+    }
+   
+]
