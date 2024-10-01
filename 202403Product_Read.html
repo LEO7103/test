@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>產品列表</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+</head>
+<style>
+    img {
+        max-width: 50%;
+        height: auto;
+    }
+</style>
+
+<body>
+
+    <table class="table table-bordered table-striped table-hover table-sm border-success table-rwd">
+        <caption class="text-end">商品列表</caption>
+        <thead class="table-dark">
+            <tr>
+                <th width="5%">產品編號</th>
+                <th width="15%">產品名稱</th>
+                <th width="35%">產品圖</th>
+                <th width="5%">產品價格</th>
+                <th width="5%">產品數量</th>
+                <th width="5%">總價</th>
+                <th width="15%">建檔時間</th>
+                <th width="15%">更新/刪除</th>
+
+
+
+            </tr>
+        </thead>
+        <tbody id="mydata">
+            <tr>
+                <td data-th="產品編號"><span class="table-col">001</span></td>
+                <td data-th="產品名稱"><span class="table-col"></span></td>
+                <td data-th="產品圖"><img src="" id="" alt=""></td>
+                <td data-th="產品價格"><span class="table-col">100</span></td>
+                <td data-th="產品數量"><span class="table-col">45</td>
+                <td data-th="總價"><span class="table-col">4500</span></td>
+                <td data-th="建檔時間"><span class="table-col">time</span></td>
+                <td>
+                    <button class="btn btn-success me-1" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        id="update_btn">更新</button>
+                    <button class="btn btn-danger" id="delete_btn">刪除</button>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <div class="container">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center" id="pageList">
+                <li class="page-item"><a class="page-link" href="#" onclick="drawTable(0)">1</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-bg-success">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">產品更新</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <!-- 更改內容 -->
+                    <div class="mb-3 ">
+                        <label for="product" class="form-label">產品名稱</label>
+                        <input type="text" class="form-control" id="product" name="product">
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="form-label">產品價格</label>
+                        <input type="number" min="0" max="100" class="form-control" id="price" name="price">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="num" class="form-label">產品數量</label>
+                        <input type="number" min="0" max="100" class="form-control" id="num" name="num">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="photo" class="form-label">產品圖片</label>
+                        <input type="file" class="form-control" id="photo" name="photo">
+                        <img src="#" id="prevImg" alt="" class="w-50 mt-3 d-none">
+                    </div>
+
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="modal_update_btn">確認更新</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script>
+        var u_id; //update id
+        var newData = [];
+
+        $(function () {
+            $.ajax({
+                type: "GET",
+                url: "202403Product_Read.php",
+                dataType: "json",
+                async: false,
+                success: showdata,
+                erroe: function () {
+                    alert("error-http://192.168.10.54/202312/202403Product_Read.php")
+                }
+            });
+
+
+            //監聽#update_btn
+            $("#mydata #update_btn").click(function () {
+                console.log("update_btn_ok");
+                console.log($(this).data("id"));
+                console.log($(this).data("product"));
+                console.log($(this).data("photo"));
+                console.log($(this).data("price"));
+                console.log($(this).data("num"));
+
+                u_id = $(this).data("id");
+                $("#product").val($(this).data("product"));
+                $("#photo").val($(this).data("photo"));
+                $("#price").val($(this).data("price"));
+                $("#num").val($(this).data("num"));
+
+
+
+
+
+            });
+
+            //監聽#delete_btn
+            $("#mydata #delete_btn").click(function () {
+                if (confirm("確認刪除此筆資料嗎?")) {
+                    console.log($(this).data("id"));
+
+                    //產生json格式的參數
+                    var dataJSON = {};
+                    dataJSON["Id"] = $(this).data("id");
+                    console.log(JSON.stringify(dataJSON));
+
+                    //傳遞參數至後端api執行刪除功能
+                    $.ajax({
+                        type: "POST",
+                        url: "http://192.168.10.54/202312/202403Product_Delete.php",
+                        data: JSON.stringify(dataJSON),
+                        dataType: "json",
+                        success: showdata_delete,
+                        error: function () {
+                            alert("error-http://192.168.10.54/202312/202403Product_Delete.php");
+                        }
+                    });
+                }
+            });
+
+            //監聽 #modal_update_btn
+            $("#modal_update_btn").click(function () {
+                //產生json格式的參數
+                var dataJSON = {};
+                dataJSON["Id"] = u_id;
+                dataJSON["Product"] = $("#product").val();
+                dataJSON["Photo"] = $("#photo").val();
+                dataJSON["Price"] = $("#price").val();
+                dataJSON["Num"] = $("#num").val();
+                console.log(JSON.stringify(dataJSON));
+
+                //傳遞更新參數至後端api
+                $.ajax({
+                    type: "POST",
+                    url: "202403Product_Update.php",
+                    data: JSON.stringify(dataJSON),
+                    dataType: "json",
+                    success: showdata_updata,
+                    error: function () {
+                        alert("error-http://192.168.10.54/202312/202403Product_Update.php");
+                    }
+                });
+            });
+
+        });
+        function showdata(data) {
+            console.log(data);
+
+            data.data.forEach(function (item, key) {
+                console.log(key);
+                if (key % 8 == 0) {
+                    newData.push([]);
+                }
+                var page = parseInt(key / 8);
+                newData[page].push(item);
+            });
+            drawTable(0);
+
+            //產生頁碼
+            $("#pageList").empty();
+            newData.forEach(function (item, key) {
+                var thisPage = key + 1;
+                var strHTML = '<li class="page-item"><a class="page-link" href="#" onclick="drawTable(' + key + ')">' + thisPage + '</a></li>';
+                $("#pageList").append(strHTML);
+            });
+
+            console.log(newData);
+        }
+
+        function drawTable(page) {
+
+            $("#mydata").empty();
+            newData[page].forEach(function (item) {
+                console.log(item.Product);
+                path = "upload/" + item.Photo;
+
+                var strHTML = '<tr><td>' + item.Id + '</td><td>' + item.Product + '</td><td><img src="' + path + '"></td><td>' + item.Price + '</td><td>' + item.Num + '</td><td>' + item.Price * item.Num + '</td><td>' + item.Created_at + '</td><td><button class="btn btn-success me-1"data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="' + item.Id + '" data-product="' + item.Product + '" data-price="' + item.Price + '" data-num="' + item.Num + '"id="update_btn" ">更新</button><button class="btn btn-danger" data-id="' + item.Id + '" id="delete_btn">刪除</button></td></tr>';
+                $("#mydata").append(strHTML);
+            });
+        }
+
+
+        function showdata_updata(data) {
+            console.log(data);
+            if (data.state) {
+                alert(data.message);
+                location.href = "202403Product_Read.html";
+            } else {
+                alert(data.message);
+            }
+        }
+        function showdata_delete(data) {
+            console.log(data);
+            if (data.state) {
+                alert(data.message);
+                location.href = "202403Product_Read.html";
+            } else {
+                alert(data.message);
+            }
+        }
+    </script>
+</body>
+
+</html>

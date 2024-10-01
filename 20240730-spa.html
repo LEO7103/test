@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall-1.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <style type="text/css">
+        .fontsizep {
+            font-size: 16px;
+            line-height: 20px;
+            /*font-family: "標楷體";*/
+        }
+
+        .aboutintitlep {
+            color: #00b7e0;
+            background-image: url(images/icon01.png);
+            background-repeat: no-repeat;
+            padding-left: 35px;
+            font-size: 16px;
+            /*font-family: "標楷體";*/
+        }
+    </style>
+
+    <style>
+        .timeline-section {
+            position: relative;
+        }
+
+        .timeline-section::before {
+            position: absolute;
+            content: "";
+            top: 10px;
+            bottom: 10px;
+            width: 4px;
+            background-color: var(--mycolor02);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-section-pointer {
+            position: relative;
+        }
+
+        .timeline-section-pointer::before {
+            position: absolute;
+            content: "";
+            width: 24px;
+            height: 24px;
+            background-color: var(--mycolor06);
+            border-radius: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 7px solid var(--mycolor10);
+            top: 10px;
+        }
+
+        .timeline-section-pointer:hover::before {
+            width: 36px;
+            height: 36px;
+            border: 10px solid var(--mycolor06);
+        }
+
+        .s11_text {
+            z-index: 10;
+            background-color: rgba(0, 0, 0, 0.3);
+            color: white;
+            padding: 15px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            /* Google font 字體 */
+            font-family: 'Poppins', sans-serif;
+        }
+
+
+        .container {
+            padding-top: 50px;
+            /* 調整這個數值以設置所需的間距 */
+        }
+
+        .banner {
+            width: 100%;
+            height: 30vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .banner video {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            object-fit: cover;
+        }
+
+        body main section.info-circles h3 {
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        body main section.info-circles div.circles {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        body main section.info-circles div.circles div.circle {
+            padding: 1rem;
+            flex: 0 1 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        body main section.info-circles div.circles div.circle img {
+            width: 100%;
+            border-radius: 50%;
+            transition: all 0.1s ease-in;
+            padding: 0.3rem;
+
+        }
+
+        body main section.info-circles div.circles div.circle img:hover {
+            border: 3px solid rgba(152, 57, 255, 0.5);
+        }
+
+
+        .text-down {
+            margin-top: 180px;
+            /* 向下偏移 50 像素 */
+        }
+
+
+
+
+        @media screen and(max-width:768px) {
+
+            .s11_text,
+            .s07_text,
+            .s09_text {
+                z-index: 10;
+                background-color: rgba(0, 0, 0, 0.3);
+                color: white;
+                padding: 15px;
+
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- *************s01*************************** -->
+
+
+
+
+    <section id="s01" class="bg-secondary">
+        <div class="container text-end">
+
+            <a href="#">
+                <i class="fa-brands fa-facebook text-info"></i>
+            </a>
+
+            <a href="#">
+                <i class="fa-brands fa-x-twitter  text-black"></i>
+            </a>
+
+            <a href="#">
+                <i class="fa-brands fa-yahoo text-danger"></i>
+            </a>
+        </div>
+    </section>
+    <!-- *************s02*************************** -->
+
+    <section id="s02" class="bg-dark">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">
+                        <i class="fa-solid fa-person-falling-burst"></i>X-Company
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">首頁</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#s02">關於我們</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#s03">營業介紹</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#s11">加入我們</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    高級VIP功能
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item disabled" id="s02_btn01"
+                                            href="20240718-product.html">高級功能01</a></li>
+                                    <li><a class="dropdown-item disabled" id="s02_btn02"
+                                            href="20240820-member-control-panel.html" target="_blank">會員管理</a></li>
+                                    <li><a class="dropdown-item disabled" id="s02_btn03"
+                                            href="project_bg_index.html">後台管理系統</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+
+                        <div>
+                            <span class="h3 text-success fw-900">會員: <span class="h1 text-danger fw-900"
+                                    id="s02_login_username">XXX</span> </span>
+                            <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#loginModal"
+                                id="s02_login_btn">登入</button>
+                            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#registerModal"
+                                id="s02_register_btn">註冊</button>
+                            <button class="btn btn-primary d-none" id="s02_logout_btn">登出</button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+    <!-- loginModal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-bg-warning">
+                    <h1 class="modal-title fs-5 fw-900 text-white" id="exampleModalLabel">會員登入</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="loginModal_username" class="form-label">帳號</label>
+                        <input type="text" name="loginModal_username" id="loginModal_username" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="loginModal_password" class="form-label">密碼</label>
+                        <input type="password" name="loginModal_password" id="loginModal_password" class="form-control">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="loginModal_ok_btn">確認</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- registerModal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header text-bg-success">
+                    <h1 class="modal-title fs-5 fw-900 text-white" id="exampleModalLabel">會員註冊</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <h3>會員守則</h3>
+                            <p>歡迎加入我們的派對主辦平台！為確保愉快、安全的體驗，請遵守以下守則：</p>
+                            <h4>1. 資格與註冊</h4>
+                            <ul>
+                                <li>您必須年滿 18 歲。</li>
+                                <li>提供真實、完整且準確的個人資料。</li>
+                                <li>定期更新資料以保持準確性。</li>
+                            </ul>
+                            <h4>2. 帳號安全</h4>
+                            <ul>
+                                <li>妥善保管帳號及密碼，勿與他人分享。</li>
+                                <li>如發現帳號異常，請立即通知我們。</li>
+                            </ul>
+                            <h4>3. 行為準則</h4>
+                            <ul>
+                                <li>禁止發布或傳送任何非法、騷擾、中傷等內容。</li>
+                            </ul>
+                            <div class="form-check">
+                                <input type="checkbox" name="registerModal_chk" id="registerModal_chk"
+                                    class="form-check-input is-invalid">
+                                <label for="registerModal_chk" class="form-check-label">同意</label>
+                                <div class="valid-feedback">同意遵守規定</div>
+                                <div class="invalid-feedback">不同意遵守規定</div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="registerModal_username" class="form-label">帳號</label>
+                                <input type="text" name="registerModal_username" id="registerModal_username"
+                                    class="form-control is-invalid" placeholder="字數3-8">
+                                <div class="valid-feedback">符合規定</div>
+                                <div class="invalid-feedback">不符合規定</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="registerModal_password" class="form-label">密碼</label>
+                                <input type="password" name="registerModal_password" id="registerModal_password"
+                                    class="form-control is-invalid" placeholder="字數3-8">
+                                <div class="valid-feedback">符合規定</div>
+                                <div class="invalid-feedback">不符合規定</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="registerModal_re_password" class="form-label">確認密碼</label>
+                                <input type="password" name="registerModal_re_password" id="registerModal_re_password"
+                                    class="form-control is-invalid" placeholder="確認密碼">
+                                <div class="valid-feedback">符合規定</div>
+                                <div class="invalid-feedback">不符合規定</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="registerModal_email" class="form-label">email</label>
+                                <input type="email" name="registerModal_email" id="registerModal_email"
+                                    class="form-control is-invalid" placeholder="字數3-15">
+                                <div class="valid-feedback">符合規定</div>
+                                <div class="invalid-feedback">不符合規定</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="registerModal_ok_btn">確認</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- *************s03*************************** -->
+    <!-- <section id="s03">
+        <div class="wrap">
+            <div class="banner">
+                <video autoplay muted loop>
+                    <source src="images/fl1.mp4" width="200" height="315" type="video/mp4">
+                </video>
+
+            </div>
+        </div>
+    </section> -->
+    <section id="s03">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item bg-cover active" style="background-image: url(images/p1.jpg); height: 40vh;">
+                    <div class="carousel-caption p-3 rounded-2 shadow-lg d-none d-md-block"
+                        style="background-color: rgb(0, 0, 0, 0.3);">
+                        <h1>在這場全球抗疫的戰鬥中，您可以成為改變的一部分。</h1>
+                        <p>我們公司的新冠疫苗經過嚴格的臨床試驗，安全有效，旨在幫助您和您的家人抵禦病毒的威脅。
+                        </p>
+                    </div>
+                </div>
+                <!-- <div class="carousel-item bg-cover" style="background-image: url(images/f21.jpeg); height: 40vh;">
+                    <div class="carousel-caption p-3 rounded-2 shadow-lg d-none d-md-block"
+                        style="background-color: rgb(0, 0, 0, 0.3);">
+                        <h2>每一顆水果都經過嚴格檢驗，確保最優質的口感</h5>
+                            <p>我們的水果店專注於提供最新鮮、最優質的水果，無論是當季水果還是稀有品種，我們都一應俱全。
+                            </p>
+                    </div>
+                </div>
+                <div class="carousel-item bg-cover" style="background-image: url(images/f30.jpg); height: 40vh;">
+                    <div class="carousel-caption p-3 rounded-2 shadow-lg d-none d-md-block"
+                        style="background-color: rgb(0, 0, 0, 0.3);">
+                        <h5>來自日本直送夕張哈密掛，是您最佳選擇！</h5>
+                        <p>日本溫室栽培的哈密瓜，外觀渾圓、網目清楚、網眼大小分布平均，美麗的網紋像精心雕刻的藝術品。
+                        </p>
+                    </div>
+                </div> -->
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+    <!-- *************s04*************************** -->
+    <!-- 300px下的background-attachment: fixed -->
+    <section id="s04">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md-5 bg-cover wow animate__fadeInTopLeft" data-wow-duration="5s" data-wow-delay="500s"
+                    data-wow-iteration="5" style="background-image: url(images/p2.jpg); height: 500px;;"></div>
+                <div class="col-md-7 p-5">
+
+                    <h1>成立於西元1980年 <span class="text-success">全球第一家</span></h1>
+                    <h1>流感病毒研發團隊</h1>
+                    <p class="mb-1">我們的實驗室來自美國加州，陽光充足的氣候造就了它們無與倫比的甜美</p>
+                    <p class="mb-1">在全球對抗流感及新冠病毒的戰鬥中，我們的研究團隊致力於科學創新與公共健康，努力為每個人帶來希望與安全</p>
+                    <p class="mb-1">我們專注於新冠病毒的基礎研究和疫苗開發，透過深入研究，我們希望找到更有效的預防和治療方案。</p>
+                    <div class="row mt-5">
+                        <div class="col-3">
+                            <h4>每月營業額</h4>
+                            <h2 class="counter01">89 <span class="h4">/億</span> </h2>
+                        </div>
+                        <div class="col-3">
+                            <h4>獲獎數目每年達</h4>
+                            <h2 class="counter02">20 <span class="h4">/枚獎牌</span> </h2>
+                        </div>
+                        <div class="col-3">
+                            <h4>博士後研究員</h4>
+                            <h2 class="counter03">108 <span class="h4">/位</span> </h2>
+                        </div>
+                        <div class="col-3">
+                            <h4>公司據點</h4>
+                            <h2 class="counter04">12 <span class="h4">/處</span> </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- *************s04-1*************************** -->
+    <section id="s04"></section>
+    <div class="container-fluid">
+        <div class="row align-items-center">
+
+            <div class="col-md-5 p-5">
+
+                <h1>開發項目 <span class="text-success">全球獨家首創</span></h1>
+                <h1>Modern</h1>
+                <p class="mb-1">Modern疫苗經過全球89個國家採用</p>
+                <p class="mb-1">快速免疫：施打後免疫反應較低，短時間內產生大量抗體</p>
+                <p class="mb-1">科學驗證:經過三期臨床試驗通過，感染率降低為10%</p>
+                <div class="row mt-5">
+                    <div class="col-3">
+                        <h4>科學認證</h4>
+                        <h2 class="counter01">72 <span class="h4">/次</span> </h2>
+                    </div>
+                    <div class="col-3">
+                        <h4>臨床試驗</h4>
+                        <h2 class="counter02">3 <span class="h4">/次</span> </h2>
+                    </div>
+                    <div class="col-3">
+                        <h4>高效保護</h4>
+                        <h2 class="counter03">90 <span class="h4">/%</span> </h2>
+                    </div>
+                    <div class="col-3">
+                        <h4>接種據點</h4>
+                        <h2 class="counter04">15 <span class="h4">/處</span> </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7 bg-cover wow animate__fadeInTopLeft" data-wow-duration="5s" data-wow-delay="500s"
+                data-wow-iteration="5" style="background-image: url(images/p3.jpg); height: 500px;;"></div>
+        </div>
+    </div>
+    </section>
+    <!-- *************s05*************************** -->
+    <section id="s05"
+        style="background-image: url(images/p4.jpg); background-size: cover; background-position: center center; background-attachment: fixed; height: 600px; ">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4 text-warning">
+                    <h1 class="text-down">選擇Modern疫苗，保護您和您的家人！</h1>
+                </div>
+                <div class="col-md-8 text-warning">
+                    <h4 class="text-down">在對抗新冠病毒的戰鬥中，憑藉其卓越的安全性和有效性，成為全球信賴的防護選擇</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- *************s06*************************** -->
+    <section id="s06" class="empty-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 text-center mt-4 mb-3 wow animate__fadeInTopLeft" data-wow-duration="3s"
+                    data-wow-delay="0s" data-wow-iteration="1">
+
+                    <i class="fa-solid fa-shield-virus fa-8x text-danger mb-3"></i>
+                    <h3 class="fw-900 mb-3">🍎 富士蘋果—品味自然的甜蜜！</h3>
+                    <p class="fs-5">
+                        富士蘋果來自日本優質品種，每一口都擁有自然的甜美和脆嫩的口感
+                    </p>
+                </div>
+                <div class="col-md-4 text-center mt-4 mb-3 wow animate__fadeInUp" data-wow-duration="3s"
+                    data-wow-delay="0s" data-wow-iteration="1">
+                    <i class="fa-solid fa-syringe fa-8x text-warning mb-3"></i>
+                    <h3 class="fw-900 mb-3">🍋 台灣檸檬—自然的清新酸爽！</h3>
+                    <p class="fs-5">
+                        我們的檸檬來自台中的優質農場，每一顆檸檬都經過精心栽培，擁有最自然的清新酸味。
+                    </p>
+                </div>
+                <div class="col-md-4 text-center mt-4 mb-3 wow animate__fadeInTopRight" data-wow-duration="3s"
+                    data-wow-delay="0s" data-wow-iteration="1">
+                    <i class="fa-solid fa-vial-virus fa-8x text-success mb-3"></i>
+                    <h3 class="fw-900 mb-3">🥕 紅蘿蔔—無法抵擋的風味！</h3>
+                    <p class="fs-5">
+                        紅蘿蔔擁有鮮豔的橙色，不僅口感甜美，還富含維生素A，有助於提升視力和促進消化。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- *************s07*************************** -->
+    <!-- <section id="s07" class="bg-warning" style="position: relative; height: 500px;">
+        <div class="row">
+            <div class="col-md-5 bg-cover wow animate__bounceInLeft" data-wow-duration="1s" data-wow-delay="0s"
+                data-wow-iteration="infinite"
+                style="position: absolute; background-image: url(images/f5.jpg); top: 0; bottom: 0; height: 500px;">
+            </div>
+        </div>
+        <div class="container">
+            <div class="row justify-content-end">
+                <div class="col-md-7 my-5 s07_text">
+                    <div class="h1">🍊 加州柳橙——陽光與美味的結晶！</div>
+                    <h4>來自加州的柳橙，每一口都充滿了陽光的甜美。獨特的氣候和土壤條件造就了它們無與倫比的鮮甜口感。</h4>
+                    <button class="btn btn-outline-info">查看更多</button>
+                    <div class="row mt-5">
+                        <div class="col-md-6">
+                            <div class="h3">甜美多汁且富含維生素C。</div>
+                            <p>每顆柳橙都經過精心挑選，確保最完美的鮮美與營養</p>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="h3">新鮮采摘，保證最高品質。</div>
+                            <p>無論是直接食用還是榨汁，加州柳橙都能帶給您絕佳的味覺享受。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+
+
+
+
+    <!-- *************s08*************************** -->
+    <section id="s08"
+        style="background-image: url(images/v3.jpg); background-size: cover; background-position: center center; background-attachment: fixed; height: 400px; ">
+        <div class="container py-4 wow animate__flipInX" data-wow-duration="3s" data-wow-delay="0s"
+            data-wow-iteration="1">
+            <div class="h2 fw-900 text-center text-warning">主要服務項目</div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="d-flex">
+                        <i class="fa-solid fa-heart fa-6x text-info me-4"></i>
+                        <div>
+                            <div class="h3 text-white">水果宅配</div>
+                            <p class="text-white">
+                                我們提供全方位的婚禮策劃服務，包括場地選擇、主題設計、儀式安排、宴會籌備等。我們專業的團隊會根據新人的喜好和預算，精心打造一場獨特、難忘的婚禮，讓每個細節都充滿愛與感動。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex">
+                        <i class="fa-solid fa-gifts fa-6x text-success me-4 "></i>
+                        <div>
+                            <div class="h3 text-white">各國水果販售</div>
+                            <p class="text-white">
+                                我們專精於策劃各類企業活動，如產品發布會、年會、員工團建等。我們會根據客戶的品牌形象和活動目標，提供創意的活動方案，並全程協助執行，確保活動順利進行並達到預期效果。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="d-flex">
+                        <i class="fa-solid fa-cloud-sun fa-6x text-primary me-4"></i>
+                        <div>
+                            <div class="h3 text-white">限量產品</div>
+                            <p class="text-white">
+                                我們為各年齡層提供量身定制的生日派對服務，從主題設計、場地佈置到娛樂活動安排，無一不精心策劃。我們致力於創造難忘的生日回憶，讓壽星和賓客享受一個充滿驚喜和歡樂的派對。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex">
+                        <i class="fa-regular fa-handshake fa-6x text-danger me-4"></i>
+                        <div>
+                            <div class="h3 text-white">每日特價</div>
+                            <p class="text-white">
+                                無論是復古派對、電影之夜還是節慶派對，我們都能為您打造專屬的主題活動。我們的服務包括概念創意、場地設計、服裝建議及活動互動安排，讓每位賓客都能融入其中，享受與眾不同的體驗。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- *************s09*************************** -->
+    <section id="s09" style="position: relative; background-image: url(images/f39.jpg);">
+        <div class="container ">
+            <div class="row">
+                <div class="col-md-7 s09_text">
+                    <dl class="row">
+                        <dt class="col-sm-3 text-white">服務價格介紹</dt>
+                        <dd class="col-sm-9 text-white">A description list is perfect for defining terms.</dd>
+
+                        <dt class="col-sm-3 text-white">服務項目</dt>
+                        <dd class="col-sm-9 text-white">
+                            <p>Definition for the term.</p>
+                            <p>And some more placeholder definition text.</p>
+                        </dd>
+
+                        <dt class="col-sm-3 text-white">其他種類</dt>
+                        <dd class="col-sm-9 text-white">This definition is short, so no extra paragraphs or anything.
+                        </dd>
+
+                        <dt class="col-sm-3 text-truncate text-white">宅配方式</dt>
+                        <dd class="col-sm-9 text-white">This can be useful when space is tight. Adds an ellipsis at the
+                            end.</dd>
+
+                        <dt class="col-sm-3 text-white">客服諮詢</dt>
+                        <dd class="col-sm-9">
+                            <dl class="row">
+                                <dt class="col-sm-4 text-white">Nested definition list</dt>
+                                <dd class="col-sm-8 text-white">I heard you like definition lists. Let me put a
+                                    definition list
+                                    inside your definition list.</dd>
+                            </dl>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-end">
+            <div class="col-md-5 bg-cover"
+                style="position: absolute; background-image: url(images/v5.jpg); top: 0; bottom: 0;"></div>
+        </div>
+    </section>
+
+    <!-- *************s10*************************** -->
+    <!-- <section>
+        <div class="banner bg-cover bg-info  d-none d-md-block  "
+            style="height: 1000px;width: auto;  background-image: linear-gradient(180deg, rgba(238, 241, 241, 0.3), rgba(214, 217, 218, 0.959)), url(image/river.jpg);">
+            <div class="container">
+
+                <div class="h3 text-danger fw-900 my-3">本週熱銷<small class="text-muted">Hot-selling</small></div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="images/f50.jpg" class="img-fluid" id="imgFull" alt="">
+                        <div>
+                            <ul class="list-unstyled d-flex justify-content-between flex-nowrap overflow-auto my-3">
+
+                                <li>
+                                    <img class="bg-cover" onclick="changeImg('f50')" src="images/f50.jpg" alt=""
+                                        style="height: 100px; cursor:pointer;">
+                                </li>
+                                <li>
+                                    <img class="bg-cover" onclick="changeImg('f51')" src="images/f51.jpg" alt=""
+                                        style="height: 100px; cursor:pointer;">
+                                </li>
+                                <li>
+                                    <img class="bg-cover" onclick="changeImg('f52')" src="images/f52.jpg" alt=""
+                                        style="height: 100px; cursor:pointer;">
+                                </li>
+                                <li>
+                                    <img class="bg-cover" onclick="changeImg('f53')" src="images/f53.jpg" alt=""
+                                        style="height: 100px; cursor:pointer;">
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="h3">熱銷水果</div>
+                    <div class="h3">價格:99</div>
+                    <div class="h3">產地
+                        <span class="text-bg-success badge fw-500">台灣</span>
+
+                    </div>
+                    <div class="card-text h3 fw-500 mt-2">簡介: <span class="fw-400">台灣本土產水果。</span></div>
+                    <div class="mb-3">
+                        <label for="form-label">數量</label>
+                        <input type="number" class="form-control" min="1" max="100" value="10">
+                    </div>
+                    <button class="btn btn-danger w-100 mt-3">立即訂購</button>
+                </div>
+
+
+            </div>
+
+            <div class="row justify-content-end " data-wow-iteration="1">
+                <div class="col-md-2 bg-cover wow animate__fadeInDown " data-wow-duration="3s" data-wow-delay="0s"
+                    data-wow-iteration="1"
+                    style="height: 500px; background-image: url(images/f50.jpg); position: relative; top: -800px;">
+                    <div class="col-md-6">
+                        <div class="h3">新鮮採摘，保證最高品質。</div>
+                        <p>台灣本地農場現摘。</p>
+                    </div>
+                </div>
+                <div class="col-md-2 bg-cover wow animate__fadeInUp" data-wow-duration="3s" data-wow-delay="0s"
+                    data-wow-iteration="1"
+                    style="height: 500px; background-image: url(images/f51.jpg); position: relative; top: -800px;">
+                    <div class="col-md-6">
+                        <div class="h3">新鮮採摘，保證最高品質。</div>
+                        <p>台灣本地農場現摘。</p>
+                    </div>
+                </div>
+                <div class="col-md-2 bg-cover wow animate__fadeInRight" data-wow-duration="3s" data-wow-delay="0s"
+                    data-wow-iteration="1"
+                    style="height: 500px; background-image: url(images/f52.jpg); position: relative; top: -800px;">
+                    <div class="col-md-6">
+                        <div class="h3">新鮮採摘，保證最高品質。</div>
+                        <p>台灣本地農場現摘。</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </section> -->
+
+
+    <!-- *************s11*************************** -->
+    <!-- <section id="s11" class="d-none">
+        <div class="container">
+            <h2 class="text-warning fw-900 my-3">|會員專屬特價<small class="text-muted">Product</small></h2>
+            <div class="row gy-4" id="mydata">
+                <div class="col-lg-4">
+                    <div class="card">
+                        <img src="img/spring1" class="card-img-top" alt="">
+                        <div class="card-body d-flex flex-column">
+                            <div class="card-text h3 fw-900 text-primary">水果</div>
+                            <div class="card-text h4 fw-900">價格:123</div>
+                            <div class="card-text"><span class="h4 fw-900">原料: </span>
+                                <span class="text-bg-success badge fw-500">農藥</span>
+                            </div>
+                            <div class="card-text h4 fw-900 mt-2">簡介: <span class="fw-400">請先預約後到現場</span></div>
+                            <a href="hospitalCakeDetail.html" class="btn btn-warning w-100 my-3">預約時間</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section> -->
+
+
+
+
+    <!-- *************s12*************************** -->
+    <!-- <main>
+        <section class="background-img">
+            <div class="filter"></div>
+
+        </section>
+
+        <section class="info-circles" style=" background-image: linear-gradient(180deg,rgba(238, 241, 241, 0.3),rgba(214, 217, 218, 0.959)),url(image/Fujiyama.jpg);
+        background-repeat: no-repeat;
+        background-attachment: fixed;">
+            <h3>本月份當季水果</h3>
+            <div class="circles">
+                <div class="circle wow animate__rotateInDownLeft" data-wow-duration="3s" data-wow-delay="0s"
+                    data-wow-iteration="1">
+                    <img src="./images/f4.jpg" alt="" />
+                    <p>好吃</p>
+                </div>
+                <div class="circle wow animate__rotateInDownLeft" data-wow-duration="3s" data-wow-delay="0s"
+                    data-wow-iteration="1">
+                    <img src="./images/f42.jpg" alt="" />
+                    <p>好吃</p>
+                </div>
+                <div class="circle wow animate__rotateInDownLeft" data-wow-duration="3s" data-wow-delay="0s"
+                    data-wow-iteration="1">
+                    <img src="./images/f43.jpg" alt="" />
+                    <p>好吃</p>
+                </div>
+                <div class="circle wow animate__rotateInDownLeft" data-wow-duration="3s" data-wow-delay="0s"
+                    data-wow-iteration="1">
+                    <img src="./images/f44.jpg" alt="" />
+                    <p>好吃</p>
+                </div>
+            </div>
+        </section>
+    </main> -->
+    <!-- *************s13*************************** -->
+    <section>
+        <div class="container">
+            <div class="timeline-section">
+                <div class="row align-items-center timeline-section-pointer ">
+
+                    <div class="col-md-6 mt-3 text-center">
+                        <div class="h3 text-danger fw-900">關於我們<small class="text-muted">About us</small></div>
+                        <p class="fw-700">故事原由</p>
+                        <ul class="list-unstyled fw-700">
+
+                            <li>成立於西元1980年 全球第一家流感病毒研發團隊</li>
+                            <li></li>
+
+                            <li>我們專注於新冠病毒的基礎研究和疫苗開發，透過深入研究，我們希望找到更有效的預防和治療方案。</li>
+
+                        </ul>
+
+                    </div>
+                    <div class="col-md-6 bg-cover mt-3 offset-0"
+                        style="background-image: url(images/b02.png); height: 280px;; ">
+
+                    </div>
+
+
+
+                </div>
+
+
+                <div class="row align-items-center flex-row-reverse timeline-section-pointer ">
+                    <div class="col-md-6 mt-3 text-center">
+                        <div class="h3 text-danger fw-900">專業開發<small class="text-muted">Professional
+                                development</small></div>
+                        <p class="fw-700">專業實驗室開發</p>
+                        <ul class="list-unstyled fw-700">
+                            <li>國家級實驗室把關，在我們的專業疫苗實驗室，我們致力於研發創新疫苗，對抗全球性疾病。</li>
+                            <li>通過尖端科技與專業團隊，我們不斷推動疫苗研發的邊界，保障每一個人的健康與安全。</li>
+
+
+                        </ul>
+
+                    </div>
+                    <div class="col-md-6 bg-cover mt-3" style="background-image: url(images/r1.jpg); height: 280px;  ">
+                    </div>
+
+                </div>
+
+
+
+                <div class="row align-items-center timeline-section-pointer ">
+
+                    <div class="col-md-6 mt-3 text-center">
+                        <div class="h3 text-danger fw-900">管理團隊<small class="text-muted">Top team
+                            </small></div>
+                        <p class="fw-700">專業經理人把關</p>
+                        <ul class="list-unstyled fw-700">
+
+                            <li>團隊由生物醫學專家、公共衛生學者及法規專家組成，確保專業性與全面性。</li>
+                            <li>定期舉辦專業培訓，保持團隊在疫苗管理領域的前沿知識。</li>
+                            <li>建立完善的風險評估系統，快速應對潛在的市場需求。</li>
+
+                            <!-- <li>請即致電或訪問我們的網站，了解更多詳情並預約您的日本定食體驗。期待與您在我們的餐桌上共享美好時光！</li> -->
+                        </ul>
+
+                    </div>
+                    <div class="col-md-6 bg-cover mt-3 offset-0"
+                        style="background-image: url(images/m2.jpg); height: 280px;; ">
+
+                    </div>
+
+
+
+                </div>
+
+
+                <div class="row align-items-center flex-row-reverse timeline-section-pointer ">
+                    <div class="col-md-6 mt-3 text-center">
+                        <div class="h3 text-danger fw-900">店家資訊<small class="text-muted">Store Info</small></div>
+                        <p class="fw-700">店名:尖端疫苗公司</p>
+                        <ul class="list-unstyled fw-700">
+                            <li>地址:台中市西屯區深山里煤酉路1號</li>
+                            <li>電話:04-123456</li>
+                            <li>營業時段:pm:3:00~am:2:00</li>
+
+                        </ul>
+
+                    </div>
+                    <div class="col-md-6 bg-cover mt-3" style="background-image: url(images/b01.jpg); height: 280px;  ">
+                    </div>
+
+
+
+                </div>
+
+
+    </section>
+
+    <!-- *************s14*************************** -->
+
+    <section id="s10 bg-success">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-6">
+                    <p class="fw-700">2024國際疫苗開發研討會報名</p>
+                    <div class="mb-3">
+                        <label for="" class="form-label">姓名</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">電話</label>
+                        <input type="phone" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Email</label>
+                        <input type="email" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">人數</label>
+                        <input type="number" class="form-control">
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="food01">
+                        <label for="" class="form-check-label">葷食</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="food01">
+                        <label for="" class="form-check-label">素食</label>
+                    </div>
+                    <div class="card-footer text-center">
+                        <button class="btn btn-primary" id="ok_btn">確認</button>
+                        <button class="btn btn-secondary">取消</button>
+
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="container pt-5">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div id="map" class="bg-info" style="height: 500px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <script src="js/bootstrap.bundle.min.js"></script> -->
+                    <script src="js/jquery-3.7.1.min.js"></script>
+                    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+                        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+                    <script>
+                        $(function () {
+                            var map = L.map('map').setView([24.17153835735301, 120.60937941678958], 15);
+
+                            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                            }).addTo(map);
+
+                            L.marker([24.17153835735301, 120.60937941678958]).addTo(map)
+                                .bindPopup('中彰投分署<img src="images/landscape01.avif" class="img-fluid" alt="">')
+                                .openPopup();
+
+
+
+                        });
+                    </script>
+
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+
+
+    <!-- *************s15*************************** -->
+
+
+    <section id="s15">
+        <div class="row">
+            <div class="col-md-6 bg-cover"
+                style="background-image: url(images/m1.jpg); width: 1000px; height: 300px; background-position: right center;">
+                <div class="row align-items-center mt-3 ms-2">
+                    <div class="col-7 s11_text">
+                        <large class="text-info fw-900">加入我們</large>
+                        <div class="h3 fw-800">誠徵業務經理數人</div>
+                        <p>職務介紹:
+                            負責開發新客戶及維護現有客戶關係
+                            了解市場需求，提出有效的銷售策略
+                            與醫療機構、政府機關及合作夥伴保持密切聯繫
+                            參加行業展會，推廣公司產品及品牌形象
+                            收集市場資訊，分析競爭對手動態。
+                        </p>
+                        <a href="#" class="btn btn-outline-warning">詳細資料</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 bg-cover"
+                style="background-image: url(images/m3.jpg); width: 1000px; height: 300px; background-position: right center;">
+                <div class="row align-items-center mt-3 ms-2">
+                    <div class="col-7 s11_text">
+                        <large class="text-info fw-900">加入我們</large>
+                        <div class="h3 fw-800">誠徵業務經理數人</div>
+                        <p>福利介紹:
+                            競爭力的薪資和獎金制度
+                            完善的福利體系及專業培訓
+                            充滿活力的工作環境和良好的發展機會
+                        </p>
+                        <a href="#" class="btn btn-outline-warning">詳細資料</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="col-md-6 bg-cover " style="background-image: url(images/m2.jpg); width:1000px ; height: 300px;">
+                <div class="row align-items-center mt-3 ms-2">
+                    <div class="col-7 s11_text">
+                        <large class="text-info fw-800">加入我們</large>
+                        <div class="h3 fw-900">誠徵業務經理數人</div>
+                        <p>職務介紹:
+                            歐美光碟時尚給予高雄成立有時候認識歐美戀愛一支三年引發，她說一路專門一份大門放棄發現圖象是一種在這個大戰，音樂專欄禁止意大利作用法律責任拍攝搜。
+                        </p>
+                        <a href="#" class="btn btn-outline-warning">詳細資料</a>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </section>
+    <!-- *************s16*************************** -->
+
+    <section id="s16">
+        <div class="container">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link disabled">雲端班2024.08</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- *************s00*************************** -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="https://unpkg.com/counterup2@2.0.2/dist/index.js">	</script>
+    <script src="js/wow.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        var flag_username = false;
+        var flag_password = false;
+        var flag_re_password = false;
+        var flag_email = false;
+        var flag_chk = false;
+        $(function () {
+            //wow
+            new WOW().init();
+            //s04 counter up
+            const counterUp = window.counterUp.default
+
+            const callback = entries => {
+                entries.forEach(entry => {
+                    const el = entry.target
+                    if (entry.isIntersecting && !el.classList.contains('is-visible')) {
+                        counterUp(el, {
+                            duration: 2000,
+                            delay: 16,
+                        })
+                        el.classList.add('is-visible')
+                    }
+                })
+            }
+
+            const IO = new IntersectionObserver(callback, { threshold: 1 })
+
+
+            const el01 = document.querySelector('.counter01')
+            IO.observe(el01)
+            const el02 = document.querySelector('.counter02')
+            IO.observe(el02)
+            const el03 = document.querySelector('.counter03')
+            IO.observe(el03)
+            const el04 = document.querySelector('.counter04')
+            IO.observe(el04)
+
+            //確認uid是否存在且合法
+            if (getCookie("uid01") != "") {
+                //將uid01傳遞至後端api確認是否合法
+                var dataJSON = {};
+                dataJSON["uid01"] = getCookie("uid01");
+                console.log(JSON.stringify(dataJSON));
+
+                $.ajax({
+                    type: "POST",
+                    url: "member-login-check-uid-api.php",
+                    data: JSON.stringify(dataJSON),
+                    dataType: "json",
+                    success: showdata_check_uid,
+                    error: function () {
+                        alert("error-member-login-check-uid-api.php");
+                    }
+                });
+            } else {
+                alert("尚未登入, 請登入會員來使用附加功能!");
+            }
+
+
+
+
+            //**********************************註冊功能***********************************************
+            //監聽username
+            $("#registerModal_username").bind("input propertychange", function () {
+                if ($(this).val().length > 2 && $(this).val().length < 9) {
+                    //符合前端規定
+                    //傳遞至後端API確認帳號是否可以使用
+                    var dataJSON = {};
+                    dataJSON["username"] = $("#registerModal_username").val();
+                    console.log(JSON.stringify(dataJSON));
+                    //傳遞至後端API
+                    $.ajax({
+                        type: "POST",
+                        url: "member-register-checkuni-api.php",
+                        data: JSON.stringify(dataJSON),
+                        dataType: "json",
+                        success: showdata_checkuni,
+                        error: function () {
+                            alert("error-member-register-checkuni-api.php");
+                        }
+                    });
+                } else {
+                    //不符合規定
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_username = false;
+                }
+            });
+
+            //監聽password
+            $("#registerModal_password").bind("input propertychange", function () {
+                if ($(this).val().length > 2 && $(this).val().length < 9) {
+                    //符合規定
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_password = true;
+                } else {
+                    //不符合規定
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_password = false;
+                }
+            });
+
+            //監聽registerModal_re_password
+            $("#registerModal_re_password").bind("input propertychange", function () {
+                if ($(this).val() == $("#registerModal_password").val()) {
+                    //符合規定
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_re_password = true;
+                } else {
+                    //不符合規定
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_re_password = false;
+                }
+            });
+
+            //監聽username
+            $("#registerModal_email").bind("input propertychange", function () {
+                if ($(this).val().length > 2 && $(this).val().length < 16) {
+                    //符合規定
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_email = true;
+                } else {
+                    //不符合規定
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_email = false;
+                }
+            });
+
+            $("#registerModal_chk").change(function () {
+                if ($(this).is(":checked")) {
+                    //打勾 
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_chk = true;
+                } else {
+                    //未打勾
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_chk = false;
+                }
+            });
+
+            //註冊按鈕監聽
+            $("#registerModal_ok_btn").click(function () {
+                if (flag_username && flag_password && flag_re_password && flag_email && flag_chk) {
+                    //傳遞註冊資料至後端API 執行註冊行為
+                    //{"username":"owner01", "password":"123456", "email": "owner@test.com"}
+                    var dataJSON = {};
+                    dataJSON["username"] = $("#registerModal_username").val();
+                    dataJSON["password"] = $("#registerModal_password").val();
+                    dataJSON["email"] = $("#registerModal_email").val();
+                    console.log(JSON.stringify(dataJSON));
+
+                    $.ajax({
+                        type: "POST",
+                        url: "member-register-api.php",
+                        data: JSON.stringify(dataJSON),
+                        dataType: "json",
+                        success: showdata_register,
+                        error: function () {
+                            alert("error-member-register-api.php");
+                        }
+                    });
+
+                } else {
+                    // alert("欄位有錯請修正!");
+                    Swal.fire({
+                        title: "欄位有錯請修正!",
+                        showDenyButton: false,
+                        showCancelButton: false,
+                        confirmButtonText: "Save",
+                        denyButtonText: `Don't save`
+                    }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                            Swal.fire("Saved!", "", "success");
+                        } else if (result.isDenied) {
+                            Swal.fire("Changes are not saved", "", "info");
+                        }
+                    });
+                }
+            });
+            //**********************************登入功能***********************************************
+            //登入按鈕監聽
+            $("#loginModal_ok_btn").click(function () {
+                if ($("#loginModal_username").val() != "" && $("#loginModal_password").val() != "") {
+                    //帳號密碼都有輸入
+                    //傳遞登入資料至後端API 執行登入行為
+                    //{"username":"owner01", "password":"123456"}
+                    var dataJSON = {};
+                    dataJSON["username"] = $("#loginModal_username").val();
+                    dataJSON["password"] = $("#loginModal_password").val();
+
+                    console.log(JSON.stringify(dataJSON));
+
+                    $.ajax({
+                        type: "POST",
+                        url: "member-login-api.php",
+                        data: JSON.stringify(dataJSON),
+                        dataType: "json",
+                        success: showdata_login,
+                        error: function () {
+                            alert("error-member-login-api.php");
+                        }
+                    });
+
+                } else {
+                    //帳號密碼都有空白欄位
+                    alert("登入錯誤!");
+                }
+            });
+
+            //登出按鈕監聽
+            $("#s02_logout_btn").click(function () {
+                setCookie("uid01", "", 7);
+                location.href = "20240730-spa.html";
+            });
+
+        }); //end fun
+
+        function showdata_checkuni(data) {
+            console.log(data);
+            if (data.state) {
+                $("#registerModal_username").removeClass("is-invalid");
+                $("#registerModal_username").addClass("is-valid");
+                flag_username = true;
+            } else {
+                $("#registerModal_username").removeClass("is-valid");
+                $("#registerModal_username").addClass("is-invalid");
+                flag_username = false;
+            }
+        }
+
+        function showdata_register(data) {
+            console.log(data);
+            if (data.state) {
+                alert(data.message);
+                location.href = "20240730-spa.html";
+            } else {
+                alert(data.message);
+            }
+        }
+
+        function showdata_login(data) {
+            console.log(data);
+            if (data.state) {
+                if (data.data.State == "1") {
+
+                    alert(data.message);
+                    //loginModal隱藏
+                    $("#loginModal").modal("hide");
+                    //顯示登入帳號
+                    $("#s02_login_username").text(data.data.Username);
+                    //隱藏登入與註冊按鈕
+                    $("#s02_login_btn").addClass("d-none");
+                    $("#s02_register_btn").addClass("d-none");
+                    //顯示登出按鈕
+                    $("#s02_logout_btn").removeClass("d-none");
+
+                    //顯示vip高級功能//////////////////////////////////////////////////////
+                    $("#s02_btn01").removeClass("disabled");
+                    $("#s02_btn02").removeClass("disabled");
+                    $("#s02_btn03").removeClass("disabled");
+                    //$("#s05").removeClass("disabled");
+                    $("#s11").removeClass("disabled");
+                    //////////////////////////////////////////////////////////////////////
+                } else {
+                    //loginModal隱藏
+                    $("#loginModal").modal("hide");
+                    //顯示登入帳號
+                    $("#s02_login_username").text(data.data.Username);
+                    //隱藏登入與註冊按鈕
+                    $("#s02_login_btn").addClass("d-none");
+                    $("#s02_register_btn").addClass("d-none");
+                    //顯示登出按鈕
+                    $("#s02_logout_btn").removeClass("d-none");
+
+                }
+
+
+                //將uid01寫入cookie
+                setCookie("uid01", data.data.Uid01, 7);
+            } else {
+                alert(data.message);
+            }
+        }
+
+        function showdata_check_uid(data) {
+            console.log(data);
+            if (data.state) {
+                if (data.data.State == "1") {
+                    //顯示登入帳號
+                    $("#s02_login_username").text(data.data.Username);
+                    //隱藏登入與註冊按鈕
+                    $("#s02_login_btn").addClass("d-none");
+                    $("#s02_register_btn").addClass("d-none");
+                    //顯示登出按鈕
+                    $("#s02_logout_btn").removeClass("d-none");
+
+                    //顯示vip高級功能/////////////////////////////////////////////////////////////////
+                    $("#s02_btn01").removeClass("disabled");
+                    $("#s02_btn02").removeClass("disabled");
+                    $("#s02_btn03").removeClass("disabled");
+                    // $("#s05").removeClass("d-none");
+                    $("#s11").removeClass("d-none");
+
+                } else {
+
+                }
+
+            }
+            ///////////////////////////////////////////////////////////////////////////////
+        }
+
+
+
+        //********************from w3********************
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+    </script>
+    <script>
+        $(function () {
+            $.ajax({
+                type: "GET",
+                url: "js/bakery_products_zh.json",
+                dataType: "json",
+                success: showdata,
+                error: function () {
+                    console.log("!連線錯誤-js/bakery_products_zh.json");
+                },
+            });
+        });
+
+        function showdata(data) {
+            console.log(data);
+            $("#mydata").empty();
+
+            data.forEach(function (item) {
+                var strHTML;
+                var Ing = '';
+
+                for (var i = 0; i < item.Ingredients.length; i++) {
+                    Ing += '<span class="text-bg-success badge fw-500">' + item.Ingredients[i] + '</span>';
+                    console.log(item.Ingredients[i]);
+                }
+
+
+
+                strHTML = '<div class="col-lg-4"><div class="card h-100"><img src="' + item.ImagePath + '" class="card-img-top" alt=""><div class="card-body"><div class="card-text h3 fw-900 text-primary">'
+                    + item.ProductName + '</div><div class="card-text h4 fw-900">價格:' + item.Price + '元</div><div class="card-text"><span class="h4 fw-900">產地:</span>' + Ing + '</div><div class="card-text h4 fw-900 mt-2">簡介: <span class="fw-400">'
+                    + item.Description + '</span></div><a href="hospitalCakeDetail.html" class="btn btn-warning w-100 my-3 mt-auto">加入購物車</a></div></div></div>'
+
+                $("#mydata").append(strHTML);
+            })
+
+        }
+
+    </script>
+    <script>
+        function changeImg(num) {
+            document.getElementById('imgFull').src = "images/" + num + ".jpg";
+        }
+    </script>
+
+
+</body>
+
+</html>

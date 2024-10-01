@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>檔案上傳</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 py-5">
+                <div class="card shadow-lg">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="file01" class="form-label">檔案上傳</label>
+                            <input type="file" id="file01" name="file01" class="form-control">
+                        </div>
+                        <img src="" class="w-25 mt-2 d-none" id="prevImg" alt="">
+                    </div>
+                    <div class="card-footer text-center">
+                        <button class="btn btn-primary" id="upload_btn">確認</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script>
+        var flag_upload = false;
+        $(function () {
+            $("#file01").change(function () {
+                console.log(file01);
+                console.log(file01.files);
+                console.log(file01.files[0].type);
+                console.log(file01.files[0].name);
+                console.log(file01.files[0].size);
+                console.log(URL.createObjectURL(file01.files[0]));
+
+                if (file01.files[0].type == "image/png" || file01.files[0].type == "image/jpeg") {
+                    $("#prevImg").removeClass("d-none");
+                    $("#prevImg").attr("src", URL.createObjectURL(file01.files[0]));
+                    flag_upload = true;
+                } else {
+                    alert("jpeg or png");
+                    $("#prevImg").addClass("d-none");
+                    flag_upload = false;
+                }
+            });
+            $("#upload_btn").click(function () {
+                if (flag_upload) {
+                    //宣告表單格式
+                    var formData = new FormData();
+                    formData.append("file", file01.files[0]);
+
+                    console.log(formData);
+                    //將formData傳遞給後端api
+                    $.ajax({
+                        type: "POST",
+                        url: "20240730-uploadfile.php",
+                        dataType: "json",
+                        data: formData,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        success: showdata,
+                        error: function () {
+                            console.log("error-20240730-uploadfile.php");
+                        }
+                    });
+
+                } else {
+                    alert("檔案格式不符合!");
+                }
+            });
+        });
+        function showdata(data) {
+            console.log(data);
+        }
+    </script>
+</body>
+
+</html>

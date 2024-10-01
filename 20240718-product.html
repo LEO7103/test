@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>產品建檔</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">控制台</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="20240730-spa.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="20240718-product.html">產品建檔</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="20240718-table.html">產品管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                </ul>
+
+
+
+
+                <div>
+                    <span class="h3 text-success fw-900">會員: <span class="h1 text-danger fw-900"
+                            id="s02_login_username">XXX</span> </span>
+                    <button class="btn btn-primary d-none" id="s02_logout_btn">登出</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+
+        <!-- 99999999999999999999999999999999999999 -->
+        <div class="row justify-content-center my-5">
+            <div class="col-10">
+                <div class="card shadow-lg">
+                    <div class="card-header text-bg-warning">
+                        <div class="h3 text-center fw-900">預約表單</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3 form-floating">
+                            <input type="text" class="form-control is-invalid" id="p_name" name="p_name"
+                                list="p_name_list" placeholder="">
+                            <label for="p_name" class="form-label">姓名(字數3~6)</label>
+                            <datalist id="p_name_list">
+                                <option value="美式咖啡">美式咖啡</option>
+                                <option value="拿鐵咖啡">拿鐵咖啡</option>
+                                <option value="卡布">卡布</option>
+                            </datalist>
+                            <div class="valid-feedback">符合規定</div>
+                            <div class="invalid-feedback">不符合規定</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="p_price" class="form-label">電話(8~10)</label>
+                            <input type="number" class="form-control is-valid" id="p_price" name="p_price" min="0"
+                                max="1000" value="10">
+                            <div class="valid-feedback">符合規定</div>
+                            <div class="invalid-feedback">不符合規定</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="p_num" class="form-label">住址(1~10)</label>
+                            <input type="number" class="form-control is-valid" id="p_num" name="p_num" min="0" max="100"
+                                value="10">
+                            <div class="valid-feedback">符合規定</div>
+                            <div class="invalid-feedback">不符合規定</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="p_remark" class="form-label">產品備註(1~5)</label>
+                            <textarea name="p_remark" id="p_remark" class="form-control is-invalid"></textarea>
+                            <div class="valid-feedback">符合規定</div>
+                            <div class="invalid-feedback">不符合規定</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 py-5">
+                                <div class="card shadow-lg">
+                                    <div class="card-body">
+
+
+
+
+
+                                        <div class="card-body">
+                                            <div class="mb-3">
+                                                <label for="file01" class="form-label">檔案上傳</label>
+                                                <input type="file" id="file01" name="file01" class="form-control">
+                                            </div>
+                                            <img src="" class="w-25 mt-2 d-none" id="prevImg" alt="">
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer text-center">
+                        <button class="btn btn-secondary">取消</button>
+                        <button class="btn btn-primary" id="ok_btn">確認</button>
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script>
+        var flag_p_name = false;
+        var flag_p_price = true;
+        var flag_p_num = true;
+        var flag_p_remark = false;
+        var flag_upload = false;
+        $(function () {
+            //確認uid是否存在且合法
+            if (getCookie("uid01") != "") {
+                //將uid01傳遞至後端api確認是否合法
+                var dataJSON = {};
+                dataJSON["uid01"] = getCookie("uid01");
+                console.log(JSON.stringify(dataJSON));
+
+                $.ajax({
+                    type: "POST",
+                    url: "member-login-check-uid-api.php",
+                    data: JSON.stringify(dataJSON),
+                    dataType: "json",
+                    success: showdata_check_uid,
+                    error: function () {
+                        alert("error-member-login-check-uid-api.php");
+                    }
+                });
+            } else {
+                alert("尚未登入, 請登入會員來使用附加功能!");
+                location.href = "20240730-spa.html";
+            }
+
+            //登出按鈕監聽
+            $("#s02_logout_btn").click(function () {
+                setCookie("uid01", "", 7);
+                location.href = "20240730-spa.html";
+            });
+
+            //監聽p_name
+            $("#p_name").bind("input propertychange", function () {
+                if ($(this).val().length > 1 && $(this).val().length < 7) {
+                    //符合規定
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_p_name = true;
+                } else {
+                    //不符合規定
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_p_name = false;
+                }
+            });
+
+            //監聽p_price
+            $("#p_price").bind("input propertychange", function () {
+                if ($(this).val() > 0 && $(this).val() < 1001) {
+                    //符合規定
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_p_price = true;
+                } else {
+                    //不符合規定
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_p_price = false;
+                }
+            });
+
+            //監聽p_num
+            $("#p_num").bind("input propertychange", function () {
+                if ($(this).val() > 0 && $(this).val() < 101) {
+                    //符合規定
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_p_num = true;
+                } else {
+                    //不符合規定
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_p_num = false;
+                }
+            });
+
+            //監聽p_remark
+            $("#p_remark").bind("input propertychange", function () {
+                if ($(this).val().length > 0 && $(this).val().length < 6) {
+                    //符合規定
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_p_remark = true;
+                } else {
+                    //不符合規定
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_p_remark = false;
+                }
+            });
+
+            $("#ok_btn").click(function () {
+                if (flag_p_name && flag_p_num && flag_p_price && flag_p_remark) {
+                    console.log($("#p_name").val());
+                    console.log($("#p_price").val());
+                    console.log($("#p_num").val());
+                    console.log($("#p_remark").val());
+                    //{"name":"雞腿飯", "price":"100", "num":"2", "remark":"好吃"}
+
+
+
+
+                    var dataJSON = {};
+                    dataJSON["name"] = $("#p_name").val();
+                    dataJSON["price"] = $("#p_price").val();
+                    dataJSON["num"] = $("#p_num").val();
+                    dataJSON["remark"] = $("#p_remark").val();
+
+                    console.log(JSON.stringify(dataJSON));
+
+
+
+
+                    if (flag_upload) {
+                        //宣告表單格式
+                        var formData = new FormData();
+                        formData.append("file", file01.files[0]);
+
+                        console.log(formData);
+                        //將formData傳遞給後端api
+                        $.ajax({
+                            type: "POST",
+                            url: "20240730-uploadfile.php",
+                            dataType: "json",
+                            data: formData,
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            success: showdata,
+                            error: function () {
+                                console.log("error-20240730-uploadfile.php");
+                            }
+                        });
+
+                    } else {
+                        alert("檔案格式不符合!");
+                    }
+                    //傳遞至後端api
+                    $.ajax({
+                        type: "POST",
+                        url: "20240716-Create_V1.php",
+                        data: JSON.stringify(dataJSON),
+                        contentType: "application/json;charset=utf-8",
+                        dataType: "json",
+                        success: showdata_create,
+                        error: function () {
+                            alert("error-20240716-Create_V1.php");
+                        }
+                    });
+                } else {
+                    alert("欄位有錯, 請修正!");
+                }
+            });
+        });
+
+        function showdata_create(data) {
+            console.log(data);
+            if (data.state) {
+                alert(data.message);
+                location.href = "20240718-product.html";
+            } else {
+                alert(data.message);
+            }
+        }
+
+        function showdata_check_uid(data) {
+            console.log(data);
+            if (data.state) {
+                //顯示登入帳號
+                $("#s02_login_username").text(data.data.Username);
+                //顯示登出按鈕
+                $("#s02_logout_btn").removeClass("d-none");
+            }
+        }
+
+        //********************from w3********************
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+    </script>
+    <script>
+        var flag_upload = false;
+        $(function () {
+            $.ajax({
+                type: "GET",
+                url: "js/bakery_products_zh.json",
+                dataType: "json",
+                success: showdata,
+                error: function () {
+                    console.log("!連線錯誤-js/bakery_products_zh.json");
+                },
+            });
+        });
+
+        function showdata(data) {
+            console.log(data);
+            $("#mydata").empty();
+
+            data.forEach(function (item) {
+                var strHTML;
+                var Ing = '';
+
+                for (var i = 0; i < item.Ingredients.length; i++) {
+                    Ing += '<span class="text-bg-success badge fw-500">' + item.Ingredients[i] + '</span>';
+                    console.log(item.Ingredients[i]);
+                }
+
+
+
+
+
+
+
+
+
+
+                strHTML = '<div class="col-lg-4"><div class="card h-100"><img src="' + item.ImagePath + '" class="card-img-top" alt=""><div class="card-body"><div class="card-text h3 fw-900 text-primary">'
+                    + item.ProductName + '</div><div class="card-text h4 fw-900">價格:' + item.Price + '元</div><div class="card-text"><span class="h4 fw-900">產地:</span>' + Ing + '</div><div class="card-text h4 fw-900 mt-2">簡介: <span class="fw-400">'
+                    + item.Description + '</span></div><a href="hospitalCakeDetail.html" class="btn btn-warning w-100 my-3 mt-auto">加入購物車</a></div></div></div>'
+
+                $("#mydata").append(strHTML);
+            })
+
+        }
+
+    </script>
+    <script>
+        var flag_upload = false;
+        $(function () {
+            $("#file01").change(function () {
+                console.log(file01);
+                console.log(file01.files);
+                console.log(file01.files[0].type);
+                console.log(file01.files[0].name);
+                console.log(file01.files[0].size);
+                console.log(URL.createObjectURL(file01.files[0]));
+
+                if (file01.files[0].type == "image/png" || file01.files[0].type == "image/jpeg") {
+                    $("#prevImg").removeClass("d-none");
+                    $("#prevImg").attr("src", URL.createObjectURL(file01.files[0]));
+                    flag_upload = true;
+                } else {
+                    alert("jpeg or png");
+                    $("#prevImg").addClass("d-none");
+                    flag_upload = false;
+                }
+            });
+
+        });
+        function showdata(data) {
+            console.log(data);
+        }
+    </script>
+</body>
+
+</html>
