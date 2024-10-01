@@ -14,7 +14,6 @@
 
 - Node.js v16.15.0
 - Vue v3.2.20
-- Vite v4.0.4
 - Vue Router v4.0.11
 - Axios v0.24.0
 - Bootstrap v5.1.3
